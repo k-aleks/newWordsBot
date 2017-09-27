@@ -5,6 +5,8 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="MongoDB.Driver" Version="2.4.4" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="4.4.1" />
     <PackageReference Include="Telegram.Bot" Version="13.2.1" />
+    <None Include="nlog.config" CopyToOutputDirectory="Always" />
   </ItemGroup>
 </Project>
