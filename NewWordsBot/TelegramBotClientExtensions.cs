@@ -16,6 +16,10 @@ namespace NewWordsBot
             IReplyMarkup replyMarkup = null, 
             CancellationToken cancellationToken = default (CancellationToken))
         {
+            if (replyMarkup == null)
+            {
+                replyMarkup = new ReplyKeyboardRemove();
+            }
             return client.SendTextMessageAsync(chatId, text, parseMode, disableWebPagePreview, disableNotification,
                 replyToMessageId, replyMarkup, cancellationToken).Result;
         }

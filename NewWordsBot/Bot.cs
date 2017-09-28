@@ -56,7 +56,7 @@ namespace NewWordsBot
 
                 if (message.Text.StartsWith("/add"))
                 {
-                    var word = message.Text.Replace("/add", "");
+                    var word = message.Text.Replace("/add", "").Trim();
                     List<string> definitions = dictionary.FindDefinitions(word);
                     int defenitionsCount = Math.Min(3, definitions.Count);
                     var keyboardButtons = new InlineKeyboardButton[defenitionsCount][];
@@ -64,11 +64,11 @@ namespace NewWordsBot
                     {
                         keyboardButtons[i] = new[]
                         {
-                            new InlineKeyboardCallbackButton(definitions[i], i.ToString())
+                            new InlineKeyboardCallbackButton(definitions[i], "/add " + i)
                         };
                     }
                     var keyboard = new InlineKeyboardMarkup(keyboardButtons);
-                    botClient.SendTextMessage(message.Chat.Id, "Choose", replyMarkup: keyboard);
+                    botClient.SendTextMessage(message.Chat.Id, $"Choose definition for the word \"{word}\"", replyMarkup: keyboard);
                     pendingDefinitions[user.Username] = new Tuple<string, List<string>>(word, definitions);
                     return;
                 }
@@ -76,12 +76,12 @@ namespace NewWordsBot
                 var usage = @"Usage:
 /add <word or expression>  - add new word or expression
 ";
-                botClient.SendTextMessage(message.Chat.Id, usage, replyMarkup: new ReplyKeyboardRemove());
+                botClient.SendTextMessage(message.Chat.Id, usage);
             }
             catch (Exception exception)
             {
                 logger.Error(exception);
-                botClient.SendTextMessage(message.Chat.Id, "Ooops, some error", replyMarkup: new ReplyKeyboardRemove());
+                botClient.SendTextMessage(message.Chat.Id, "Ooops, some error");
             }
         }
 
@@ -108,19 +108,34 @@ namespace NewWordsBot
                 var user = usersStorage.GetOrRegisterUser(message.Chat.Username);
                 var callbackData = e.CallbackQuery.Data;
             
-                logger.Debug($"New callback query from {user.Username} with text: {callbackData}");
+                logger.Debug($"New callback query from {user.Username} with callback data: {callbackData}");
 
-                var pendingDefinition = pendingDefinitions[user.Username];
-                var word = pendingDefinition.Item1;
-                var definition = pendingDefinition.Item2[int.Parse(callbackData)];
-                wordsStorage.AddNewWord(user, word, definition);
-            
-                botClient.SendTextMessage(message.Chat.Id, $"Added new word \"{word}\" with definition \"{definition}\"", replyMarkup: new ReplyKeyboardRemove());
+                if (callbackData.StartsWith("/add"))
+                {
+                    if (!pendingDefinitions.ContainsKey(user.Username))
+                    {
+                        logger.Warn($"No pending definitions. User {user.Username}, callback data: {callbackData}");
+                        return;
+                    }
+                    var pendingDefinition = pendingDefinitions[user.Username];
+                    var word = pendingDefinition.Item1;
+                    var definition = pendingDefinition.Item2[int.Parse(callbackData.Split(' ')[1])];
+                    wordsStorage.AddNewWord(user, word, definition);
+                
+                    logger.Info($"Added new word \"{word}\" with definition \"{definition}\"");
+                    botClient.SendTextMessage(message.Chat.Id, $"Added new word *{word}* with definition _{definition}_", ParseMode.Markdown);
+                    pendingDefinitions.Remove(user.Username);
+                }
+                else
+                {
+                    logger.Warn("Unexpected callback");
+                    botClient.SendTextMessage(message.Chat.Id, $"Unexpected callback, sorry");
+                }
             }
             catch (Exception exception)
             {
                 logger.Error(exception);
-                botClient.SendTextMessage(message.Chat.Id, "Ooops, some error", replyMarkup: new ReplyKeyboardRemove());
+                botClient.SendTextMessage(message.Chat.Id, "Ooops, some error");
             }
         }
 
