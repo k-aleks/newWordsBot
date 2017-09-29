@@ -10,9 +10,72 @@ using Telegram.Bot.Types.ReplyMarkups;
 
 namespace NewWordsBot
 {
-    class Bot
+    class NewWordsDefinitor : ICommunicator
     {
         private readonly Dictionary<string, Tuple<string, List<string>>> pendingDefinitions = new Dictionary<string, Tuple<string, List<string>>>();
+        private readonly ITelegramBotClient botClient;
+        private readonly IUsersStorage usersStorage;
+        private readonly IWordsStorage wordsStorage;
+        private readonly IWordsDictionary dictionary;
+        private readonly ILogger logger = LogManager.GetCurrentClassLogger();
+
+        public NewWordsDefinitor(IUsersStorage usersStorage, IWordsStorage wordsStorage, IWordsDictionary dictionary, ITelegramBotClient botClient)
+        {
+            this.usersStorage = usersStorage;
+            this.wordsStorage = wordsStorage;
+            this.dictionary = dictionary;
+            this.botClient = botClient;
+        }
+
+        public bool TryHandleRequest(Message message)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool TryHandleCallback(CallbackQuery callback)
+        {
+            var message = callback.Message;
+            try
+            {
+                var user = usersStorage.GetOrRegisterUser(message.Chat);
+                var callbackData = callback.Data;
+            
+                logger.Debug($"New callback query from {user.Username} with callback data: {callbackData}");
+
+                if (callbackData.StartsWith("/add"))
+                {
+                    if (!pendingDefinitions.ContainsKey(user.Username))
+                    {
+                        logger.Warn($"No pending definitions. User {user.Username}, callback data: {callbackData}");
+                        return false;
+                    }
+                    var pendingDefinition = pendingDefinitions[user.Username];
+                    var word = pendingDefinition.Item1;
+                    var definition = pendingDefinition.Item2[int.Parse(callbackData.Split(' ')[1])];
+                    wordsStorage.AddOrUpdate(user, new Word(word, definition, ));
+                
+                    logger.Info($"Added new word \"{word}\" with definition \"{definition}\"");
+                    botClient.SendTextMessage(message.Chat.Id, $"Added new word *{word}* with definition _{definition}_", ParseMode.Markdown);
+                    pendingDefinitions.Remove(user.Username);
+                    return true;
+                }
+                else
+                {
+                    logger.Warn("Unexpected callback");
+                    botClient.SendTextMessage(message.Chat.Id, $"Unexpected callback, sorry");
+                }
+            }
+            catch (Exception exception)
+            {
+                logger.Error(exception);
+                botClient.SendTextMessage(message.Chat.Id, "Ooops, some error");
+                return false;
+            }
+        }
+    }
+    
+    class Bot
+    {
         private readonly ITelegramBotClient botClient;
         private readonly IUsersStorage usersStorage;
         private readonly IWordsStorage wordsStorage;
@@ -40,6 +103,8 @@ namespace NewWordsBot
 
             botClient.StartReceiving();
             logger.Info("Bot started");
+
+            new BackgroundRiddler(usersStorage, wordsStorage, dictionary).Start();
         }
         
         private void OnMessageReceived(object sender, MessageEventArgs e)
@@ -102,11 +167,12 @@ namespace NewWordsBot
 
         private void OnCallbackQueryReceived(object sender, CallbackQueryEventArgs e)
         {
-            var message = e.CallbackQuery.Message;
+            CallbackQuery callback = e.CallbackQuery;
+            var message = callback.Message;
             try
             {
                 var user = usersStorage.GetOrRegisterUser(message.Chat.Username);
-                var callbackData = e.CallbackQuery.Data;
+                var callbackData = callback.Data;
             
                 logger.Debug($"New callback query from {user.Username} with callback data: {callbackData}");
 
@@ -120,7 +186,7 @@ namespace NewWordsBot
                     var pendingDefinition = pendingDefinitions[user.Username];
                     var word = pendingDefinition.Item1;
                     var definition = pendingDefinition.Item2[int.Parse(callbackData.Split(' ')[1])];
-                    wordsStorage.AddNewWord(user, word, definition);
+                    wordsStorage.AddOrUpdate(user, word, definition);
                 
                     logger.Info($"Added new word \"{word}\" with definition \"{definition}\"");
                     botClient.SendTextMessage(message.Chat.Id, $"Added new word *{word}* with definition _{definition}_", ParseMode.Markdown);
