@@ -4,19 +4,20 @@ namespace NewWordsBot
 {
     internal interface IWordsDictionary
     {
-        List<string> FindDefinitions(string word);
+        DictionaryItem Find(string word);
     }
 
     class WordsDictionaryLocal : IWordsDictionary
     {
-        public List<string> FindDefinitions(string word)
+        public DictionaryItem Find(string word)
         {
-            return new List<string>()
+            var definitions = new List<string>()
             {
                 "something such as money or property that a person or company owns",
                 "an item of text or media that has been put into a digital form that includes the right to use it",
                 "a major benefit"
             };
+            return new DictionaryItem(word, definitions, WordForm.Noun);
         }
     }
 }

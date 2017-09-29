@@ -2,8 +2,9 @@
 
 namespace NewWordsBot
 {
-    interface ICommunicator
+    interface IHandler
     {
+        void Start();
         bool TryHandleRequest(Message message);
         bool TryHandleCallback(CallbackQuery callback);
     }

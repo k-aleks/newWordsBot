@@ -7,11 +7,16 @@ using Telegram.Bot.Types.ReplyMarkups;
 
 namespace NewWordsBot
 {
-    internal class BackgroundRiddlerMessanger
+    internal class BackgroundQuizHandlerMessanger
     {
         private readonly ITelegramBotClient botClient;
         private readonly ILogger logger = LogManager.GetCurrentClassLogger();
-        
+
+        public BackgroundQuizHandlerMessanger(ITelegramBotClient botClient)
+        {
+            this.botClient = botClient;
+        }
+
         public void SendRightResponse(User user)
         {
             botClient.SendTextMessage(user.ChatId, $"Correct!");

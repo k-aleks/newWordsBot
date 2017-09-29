@@ -9,53 +9,27 @@ namespace NewWordsBot
         Word GetNextReadyToRepeat(User user);
     }
 
-    internal class Word
-    {
-        public string TheWord { get; } //TODO: rename
-        public string Definition { get; }
-        public WordForm Form { get; }
-        public LearningStage Stage { get; }
-        public DateTime NextRepetition { get; }
-        public DateTime AddedToDictionary { get; }
-
-        public Word(string word, string definition, WordForm wordForm, LearningStage learningStage, DateTime nextRepetition, DateTime addedToDictionary)
-        {
-            this.TheWord = word;
-            this.Definition = definition;
-            this.Form = wordForm;
-            this.Stage = learningStage;
-            this.NextRepetition = nextRepetition;
-            this.AddedToDictionary = addedToDictionary;
-        }
-    }
-
-    internal enum LearningStage
-    {
-        First_1m,
-        Second_30m,
-        Third_42h,
-        Forth_14d,
-        Fifth_60d
-    }
-
-    //TODO: complete
-    enum WordForm
-    {
-        Noun,
-        Verb,
-        Adjective,
-        PhrasalVerb
-    }
-
     class WordsStorageLocal : IWordsStorage
     {
+        Dictionary<User, Dictionary<string, Word>> storage = new Dictionary<User, Dictionary<string, Word>>();
+        
         public void AddOrUpdate(User user, Word word)
         {
+            if (!storage.ContainsKey(user))
+                storage.Add(user, new Dictionary<string, Word>());
+            storage[user][word.TheWord] = word;
         }
 
         public Word GetNextReadyToRepeat(User user)
         {
-            throw new NotImplementedException();
+            if (!storage.ContainsKey(user))
+                return null;
+            foreach (var kvp in storage[user])
+            {
+                if (kvp.Value.NextRepetition <= DateTime.UtcNow)
+                    return kvp.Value;
+            }
+            return null;
         }
     }
 }

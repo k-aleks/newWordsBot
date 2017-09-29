@@ -1,31 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using System.Threading.Tasks;
 using NLog;
 using Telegram.Bot.Types;
 
 namespace NewWordsBot
 {
-    internal class BackgroundRiddler : ICommunicator
+    internal class BackgroundQuizHandler : IHandler
     {
         private readonly IUsersStorage usersStorage;
         private readonly IWordsStorage wordsStorage;
         private readonly IWordsDictionary dictionary;
-        private readonly IPendingRequests pendingRequests;
+        private readonly IPendingQuizRequests pendingQuizRequests;
         private readonly IRandomWordsSelector randomWordsSelector;
         private readonly ILearningMethodology learningMethodology;
         private readonly Random rnd = new Random();
         private readonly ILogger logger = LogManager.GetCurrentClassLogger();
-        private readonly BackgroundRiddlerMessanger messanger;
+        private readonly BackgroundQuizHandlerMessanger messanger;
 
-        public BackgroundRiddler(IUsersStorage usersStorage, IWordsStorage wordsStorage, IWordsDictionary dictionary,
-            IPendingRequests pendingRequests, IRandomWordsSelector randomWordsSelector, ILearningMethodology learningMethodology, BackgroundRiddlerMessanger messanger)
+        public BackgroundQuizHandler(IUsersStorage usersStorage, IWordsStorage wordsStorage, IWordsDictionary dictionary,
+            IPendingQuizRequests pendingQuizRequests, IRandomWordsSelector randomWordsSelector, ILearningMethodology learningMethodology, BackgroundQuizHandlerMessanger messanger)
         {
             this.usersStorage = usersStorage;
             this.wordsStorage = wordsStorage;
             this.dictionary = dictionary;
-            this.pendingRequests = pendingRequests;
+            this.pendingQuizRequests = pendingQuizRequests;
             this.randomWordsSelector = randomWordsSelector;
             this.learningMethodology = learningMethodology;
             this.messanger = messanger;
@@ -43,13 +42,13 @@ namespace NewWordsBot
             User user = null;
             try
             {
-                user = usersStorage.GetOrRegisterUser(callback.Message.Chat.Username);
+                user = usersStorage.GetOrRegisterUser(callback.Message.Chat);
                 int variantIndex;
                 string responseForWord;
                 ParseCallback(callback, out variantIndex, out responseForWord);
                 Word word;
                 int rightVariantIndex;
-                if (pendingRequests.TryGet(user, out word, out rightVariantIndex))
+                if (pendingQuizRequests.TryGet(user, out word, out rightVariantIndex))
                 {
                     if (word.TheWord == responseForWord)
                     {
@@ -65,7 +64,7 @@ namespace NewWordsBot
                             transformatedWordToStore = learningMethodology.OnWrongResponse(word);
                         }
                         wordsStorage.AddOrUpdate(user, transformatedWordToStore);
-                        pendingRequests.Remove(user);
+                        pendingQuizRequests.Remove(user);
                     }
                     else
                     {
@@ -123,7 +122,7 @@ namespace NewWordsBot
             var users = usersStorage.GetAllUsers();
             foreach (var user in users)
             {
-                if (!pendingRequests.ContainsRequest(user))
+                if (!pendingQuizRequests.ContainsRequest(user))
                 {
                     Word word;
                     if ((word = wordsStorage.GetNextReadyToRepeat(user)) != null)
@@ -132,7 +131,7 @@ namespace NewWordsBot
                         AddWordDefinitionsAtRandomPosition(definitions, word);
                         var rightVariantIndex = definitions.IndexOf(word.Definition);
                         messanger.AskUser(user, word.TheWord, definitions, rightVariantIndex);
-                        pendingRequests.Add(user, word, rightVariantIndex);
+                        pendingQuizRequests.Add(user, word, rightVariantIndex);
                     }
                 }
                 
@@ -153,7 +152,7 @@ namespace NewWordsBot
             for (int i = 0; i < 3; i++)
             {
                 var w = randomWordsSelector.Select(word.Form);
-                defs.Add(dictionary.FindDefinitions(w)[0]); 
+                defs.Add(dictionary.Find(w).Definitions[0]); 
             }
             return defs;
         }
