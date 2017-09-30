@@ -8,6 +8,7 @@ using Xunit;
 
 namespace NewWordsBotTests
 {
+    //TODO: refactoring
     public class NewWordsHandlerTests
     {
         [Fact]
