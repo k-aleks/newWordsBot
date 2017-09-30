@@ -4,7 +4,7 @@ using Telegram.Bot.Types;
 
 namespace NewWordsBot
 {
-    internal interface IUsersStorage
+    public interface IUsersStorage
     {
         User GetOrRegisterUser(Chat chat);
         List<User> GetAllUsers();

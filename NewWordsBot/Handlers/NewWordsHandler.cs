@@ -5,7 +5,7 @@ using Telegram.Bot.Types;
 
 namespace NewWordsBot
 {
-    class NewWordsHandler : IHandler
+    public class NewWordsHandler : IHandler
     {
         private readonly Dictionary<string, DictionaryItem> pendingDefinitions = new Dictionary<string, DictionaryItem>();
         private readonly IUsersStorage usersStorage;
@@ -13,9 +13,9 @@ namespace NewWordsBot
         private readonly IWordsDictionary dictionary;
         private readonly ILearningMethodology learningMethodology;
         private readonly ILogger logger = LogManager.GetCurrentClassLogger();
-        private readonly NewWordsHandlerMessanger messanger;
+        private readonly INewWordsHandlerMessanger messanger;
 
-        public NewWordsHandler(IUsersStorage usersStorage, IWordsStorage wordsStorage, IWordsDictionary dictionary, NewWordsHandlerMessanger messanger, ILearningMethodology learningMethodology)
+        public NewWordsHandler(IUsersStorage usersStorage, IWordsStorage wordsStorage, IWordsDictionary dictionary, INewWordsHandlerMessanger messanger, ILearningMethodology learningMethodology)
         {
             this.usersStorage = usersStorage;
             this.wordsStorage = wordsStorage;
@@ -51,7 +51,7 @@ namespace NewWordsBot
             return false;
         }
 
-
+        //TODO: don't handle callback for another word
         public bool TryHandleCallback(CallbackQuery callback)
         {
             if (!IsOurCallback(callback))

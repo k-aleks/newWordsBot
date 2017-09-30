@@ -7,7 +7,7 @@ using Telegram.Bot.Types.ReplyMarkups;
 
 namespace NewWordsBot
 {
-    class NewWordsHandlerMessanger
+    public class NewWordsHandlerMessanger : INewWordsHandlerMessanger
     {
         private readonly ITelegramBotClient botClient;
 

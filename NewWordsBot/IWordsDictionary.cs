@@ -2,7 +2,7 @@
 
 namespace NewWordsBot
 {
-    internal interface IWordsDictionary
+    public interface IWordsDictionary
     {
         DictionaryItem Find(string word);
     }

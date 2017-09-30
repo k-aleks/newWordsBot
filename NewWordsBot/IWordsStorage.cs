@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace NewWordsBot
 {
-    internal interface IWordsStorage
+    public interface IWordsStorage
     {
         void AddOrUpdate(User user, Word word);
         Word GetNextReadyToRepeat(User user);

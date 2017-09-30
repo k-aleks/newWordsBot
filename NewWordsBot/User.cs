@@ -1,6 +1,6 @@
 ﻿namespace NewWordsBot
 {
-    internal class User
+    public class User
     {
         public string Username { get; }
         public long ChatId { get; }

@@ -2,7 +2,7 @@
 
 namespace NewWordsBot
 {
-    internal class DictionaryItem
+    public class DictionaryItem
     {
         public string Word { get; } 
         public List<string> Definitions { get; }
