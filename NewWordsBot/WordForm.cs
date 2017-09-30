@@ -2,7 +2,7 @@
 {
     
     //TODO: complete
-    enum WordForm
+    public enum WordForm
     {
         Noun,
         Verb,

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace NewWordsBot
 {
-    internal class Word
+    public class Word
     {
         public string TheWord { get; } //TODO: rename
         public string Definition { get; } 
