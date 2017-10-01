@@ -10,7 +10,4 @@
     <PackageReference Include="Telegram.Bot" Version="13.2.1" />
     <None Include="nlog.config" CopyToOutputDirectory="Always" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="MacmillanClient" />
-  </ItemGroup>
 </Project>
