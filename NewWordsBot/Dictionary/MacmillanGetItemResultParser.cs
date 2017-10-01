@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data.Common;
 using System.IO;
 using System.Xml;
+using Microsoft.AspNetCore.Hosting;
 using Newtonsoft.Json;
 using NLog.LayoutRenderers.Wrappers;
 
