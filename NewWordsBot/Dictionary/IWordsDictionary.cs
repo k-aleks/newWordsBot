@@ -7,7 +7,7 @@ namespace NewWordsBot
         DictionaryItem Find(string word);
     }
 
-    class WordsDictionaryLocal : IWordsDictionary
+    class WordsDictionary : IWordsDictionary
     {
         public DictionaryItem Find(string word)
         {
@@ -17,7 +17,7 @@ namespace NewWordsBot
                 "an item of text or media that has been put into a digital form that includes the right to use it",
                 "a major benefit"
             };
-            return new DictionaryItem(word, definitions, WordForm.Noun);
+            return new DictionaryItem(word, definitions, PartOfSpeech.Noun);
         }
     }
 }

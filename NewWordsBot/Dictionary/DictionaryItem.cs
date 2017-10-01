@@ -6,9 +6,9 @@ namespace NewWordsBot
     {
         public string Word { get; } 
         public List<string> Definitions { get; }
-        public WordForm Form { get; }
+        public PartOfSpeech Form { get; }
 
-        public DictionaryItem(string word, List<string> definitions, WordForm form)
+        public DictionaryItem(string word, List<string> definitions, PartOfSpeech form)
         {
             Word = word;
             Definitions = definitions;

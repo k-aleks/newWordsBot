@@ -31,7 +31,7 @@ namespace NewWordsBot
             return new Word(word.TheWord, word.Definition, word.Form, LearningStage.First_1m, timeProvider.InOneMinute(), word.AddedToDictionary);
         }
 
-        public Word CreateNewWord(string word, string definition, WordForm form)
+        public Word CreateNewWord(string word, string definition, PartOfSpeech form)
         {
             return new Word(word, definition, form, LearningStage.First_1m, timeProvider.InOneMinute(), DateTime.UtcNow);
         }

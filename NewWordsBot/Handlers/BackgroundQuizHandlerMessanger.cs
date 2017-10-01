@@ -7,7 +7,7 @@ using Telegram.Bot.Types.ReplyMarkups;
 
 namespace NewWordsBot
 {
-    internal class BackgroundQuizHandlerMessanger
+    public class BackgroundQuizHandlerMessanger
     {
         private readonly ITelegramBotClient botClient;
         private readonly ILogger logger = LogManager.GetCurrentClassLogger();

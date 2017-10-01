@@ -12,7 +12,7 @@ namespace NewWordsBot
             
             var usersStorageLocal = new UsersStorageLocal();
             var wordsStorageLocal = new WordsStorageLocal();
-            var wordsDictionaryLocal = new WordsDictionaryLocal();
+            var wordsDictionaryLocal = new WordsDictionary();
             var learningMethodology = new LearningMethodology(new TimeProvider());
             
             List<IHandler> handlers = new List<IHandler>()

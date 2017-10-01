@@ -1,0 +1,33 @@
+{
+   "resultNumber":5,
+   "results":[
+      {
+         "entryLabel":"asset  noun",
+         "entryUrl":"http://www.macmillandictionary.com/dictionary/british/asset",
+         "entryId":"asset"
+      },
+      {
+         "entryLabel":"fixed asset  noun",
+         "entryUrl":"http://www.macmillandictionary.com/dictionary/british/fixed-asset",
+         "entryId":"fixed-asset"
+      },
+      {
+         "entryLabel":"capital asset  noun",
+         "entryUrl":"http://www.macmillandictionary.com/dictionary/british/capital-asset",
+         "entryId":"capital-asset"
+      },
+      {
+         "entryLabel":"asset-stripping  noun",
+         "entryUrl":"http://www.macmillandictionary.com/dictionary/british/asset-stripping",
+         "entryId":"asset-stripping"
+      },
+      {
+         "entryLabel":"intangible asset  noun",
+         "entryUrl":"http://www.macmillandictionary.com/dictionary/british/intangible-asset",
+         "entryId":"intangible-asset"
+      }
+   ],
+   "dictionaryCode":"british",
+   "currentPageIndex":1,
+   "pageNumber":1
+}

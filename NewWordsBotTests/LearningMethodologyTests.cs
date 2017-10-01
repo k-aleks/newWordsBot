@@ -72,7 +72,7 @@ namespace NewWordsBotTests
         
         private Word CreateWord(LearningStage learningStage)
         {
-            return new Word("", "", WordForm.Noun, learningStage, DateTime.Today, DateTime.Today);
+            return new Word("", "", PartOfSpeech.Noun, learningStage, DateTime.Today, DateTime.Today);
         }
     }
 }

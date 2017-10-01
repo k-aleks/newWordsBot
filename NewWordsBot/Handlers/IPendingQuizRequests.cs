@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace NewWordsBot
 {
-    internal interface IPendingQuizRequests
+    public interface IPendingQuizRequests
     {
         bool ContainsRequest(User user);
         bool TryGet(User user, out Word word, out int rightVariantIndex);

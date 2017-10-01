@@ -4,6 +4,6 @@
     {
         Word OnRightResponse(Word word);
         Word OnWrongResponse(Word word);
-        Word CreateNewWord(string word, string definition, WordForm form);
+        Word CreateNewWord(string word, string definition, PartOfSpeech form);
     }
 }

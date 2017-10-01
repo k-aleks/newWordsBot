@@ -7,12 +7,12 @@ namespace NewWordsBot
     {
         public string TheWord { get; } //TODO: rename
         public string Definition { get; } 
-        public WordForm Form { get; }
+        public PartOfSpeech Form { get; }
         public LearningStage Stage { get; }
         public DateTime NextRepetition { get; }
         public DateTime AddedToDictionary { get; }
 
-        public Word(string theWord, string definition, WordForm form, LearningStage stage, DateTime nextRepetition, DateTime addedToDictionary)
+        public Word(string theWord, string definition, PartOfSpeech form, LearningStage stage, DateTime nextRepetition, DateTime addedToDictionary)
         {
             TheWord = theWord;
             Definition = definition;

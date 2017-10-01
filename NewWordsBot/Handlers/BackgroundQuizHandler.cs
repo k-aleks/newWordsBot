@@ -6,7 +6,7 @@ using Telegram.Bot.Types;
 
 namespace NewWordsBot
 {
-    internal class BackgroundQuizHandler : IHandler
+    public class BackgroundQuizHandler : IHandler
     {
         private readonly IUsersStorage usersStorage;
         private readonly IWordsStorage wordsStorage;
@@ -134,7 +134,6 @@ namespace NewWordsBot
                         pendingQuizRequests.Add(user, word, rightVariantIndex);
                     }
                 }
-                
             }
         }
 

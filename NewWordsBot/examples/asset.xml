@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HOMOGRAPH ID="asset" idm_id="000002697">
+    <HEAD
+        xmlns:e="urn:IDMEE">
+        <H_S1>
+            <MAINENTRY second-colour="yes">
+                <BASE>asset</BASE>
+                <INFLX iform="plural">assets</INFLX>
+            </MAINENTRY>
+            <STARS> ★★</STARS>
+        </H_S1>
+        <H_S2>
+            <PART-OF-SPEECH> noun</PART-OF-SPEECH>
+            <SYNTAX-CODING>
+                <SEP> [</SEP>countable
+                <SEP>]</SEP>
+            </SYNTAX-CODING>
+            <PRONS>
+                <audio type="pronunciation" region="uk" caption="British English pronunciation: asset">
+                    <source type="audio/mpeg" src="https://www.macmillandictionary.com/media/british/uk_pron/a/ass/asset/asset_British_English_pronunciation.mp3"/>
+                    <source type="audio/ogg" src="https://www.macmillandictionary.com/media/british/uk_pron_ogg/a/ass/asset/asset_British_English_pronunciation.ogg"/>
+                </audio>
+                <PRON>
+                    <SEP> /</SEP>ˈæset
+                    <SEP>/</SEP>
+                </PRON>
+            </PRONS>
+            <IBOX>
+                <IBOX-HEAD>Inflections</IBOX-HEAD>
+                <INFLECTION-GROUP>
+                    <INFLECTION>
+                        <INFLECTION-TYPE>singular</INFLECTION-TYPE>
+                        <INFLECTION-ENTRY>asset</INFLECTION-ENTRY>
+                    </INFLECTION>
+                    <INFLECTION>
+                        <INFLECTION-TYPE>plural</INFLECTION-TYPE>
+                        <INFLECTION-ENTRY>assets</INFLECTION-ENTRY>
+                    </INFLECTION>
+                </INFLECTION-GROUP>
+            </IBOX>
+        </H_S2>
+    </HEAD>
+    <SENSE ID="asset__1">
+        <SENSE-NUM>1</SENSE-NUM>
+        <SENSE-CONTENT>
+            <RESTRICTION-CLASS>
+                <SEP> [</SEP>usually plural
+                <SEP>]</SEP>
+            </RESTRICTION-CLASS>
+            <DEFINITION resource="dict_british" query="yes"> something such as money or property that a person or company owns</DEFINITION>
+            <EXAMPLES ID="asset__2">
+                <EXAMPLE>The business has assets totalling £5.1 million.</EXAMPLE>
+            </EXAMPLES>
+            <TXREF txtitle="General words for possessions: " topic="asset__1" thesaurus="british">
+                <Ref dictionary="british" entryId="appurtenance" bookmark="appurtenance__1">appurtenance</Ref>, 
+                <Ref dictionary="british" entryId="real-estate" bookmark="real-estate__3">real estate</Ref>, 
+                <Ref dictionary="british" entryId="property" bookmark="property__1">property</Ref>, 
+                <Ref dictionary="british" entryId="stuff_1" bookmark="stuff_1__4">stuff</Ref>, 
+                <Ref dictionary="british" entryId="thing" bookmark="thing__7">things</Ref>, 
+                <Ref dictionary="british" entryId="goods" bookmark="goods__7">goods</Ref>, 
+                <Ref dictionary="british" entryId="possession" bookmark="possession__1">possession</Ref>, 
+                <Ref dictionary="british" entryId="asset" bookmark="asset__1">asset</Ref>, 
+                <Ref dictionary="british" entryId="belongings" bookmark="belongings__1">belongings</Ref>, 
+                <Ref dictionary="british" entryId="valuables" bookmark="valuables__1">valuables</Ref>
+            </TXREF>
+            <TXREF txtitle="To do business and relating to doing business: " topic="asset__1" thesaurus="british">
+                <Ref dictionary="british" entryId="account_1" bookmark="account_1__15">account</Ref>, 
+                <Ref dictionary="british" entryId="after-hours_2" bookmark="after-hours_2__1">after hours</Ref>, 
+                <Ref dictionary="british" entryId="asset" bookmark="asset__1">asset</Ref>, 
+                <Ref dictionary="british" entryId="beauty-parade" bookmark="beauty-parade__1">beauty parade</Ref>, 
+                <Ref dictionary="british" entryId="be-in-business" bookmark="be-in-business__1">be in business</Ref>, 
+                <Ref dictionary="british" entryId="book_1" bookmark="book_1__18">book</Ref>, 
+                <Ref dictionary="british" entryId="brokerage" bookmark="brokerage__1">brokerage</Ref>, 
+                <Ref dictionary="british" entryId="broking" bookmark="broking__1">broking</Ref>, 
+                <Ref dictionary="british" entryId="business" bookmark="business__10">business</Ref>, 
+                <Ref dictionary="british" entryId="business-plan" bookmark="business-plan__1">business plan</Ref>
+            </TXREF>
+            <SUB-SENSE ID="asset__3">
+                <SENSE-NUM>a.</SENSE-NUM>
+                <SUB-SENSE-CONTENT>
+                    <SUBJECT-AREA> computing</SUBJECT-AREA>
+                    <DEFINITION query="yes" resource="dict_british"> an item of text or media that has been put into a digital form that includes the right to use it</DEFINITION>
+                    <EXAMPLES ID="asset__4">
+                        <EXAMPLE>We recognize the need to protect your digital assets wherever you go.</EXAMPLE>
+                    </EXAMPLES>
+                    <TXREF txtitle="Relating to the business of publishing: " topic="asset__3" thesaurus="british">
+                        <Ref dictionary="british" entryId="asset" bookmark="asset__3">asset</Ref>, 
+                        <Ref dictionary="british" entryId="backlist" bookmark="backlist__1">backlist</Ref>, 
+                        <Ref dictionary="british" entryId="bibliography" bookmark="bibliography__2">bibliography</Ref>, 
+                        <Ref dictionary="british" entryId="compilation" bookmark="compilation__3">compilation</Ref>, 
+                        <Ref dictionary="british" entryId="copyright_1" bookmark="copyright_1__1">copyright</Ref>, 
+                        <Ref dictionary="british" entryId="copyright_2" bookmark="copyright_2__1">copyright</Ref>, 
+                        <Ref dictionary="british" entryId="copyright_3" bookmark="copyright_3__1">copyright</Ref>, 
+                        <Ref dictionary="british" entryId="digital-rights-management" bookmark="digital-rights-management__1">digital rights management</Ref>, 
+                        <Ref dictionary="british" entryId="drm" bookmark="drm__1">DRM</Ref>, 
+                        <Ref dictionary="british" entryId="edit_1" bookmark="edit_1__1">edit</Ref>
+                    </TXREF>
+                </SUB-SENSE-CONTENT>
+            </SUB-SENSE>
+        </SENSE-CONTENT>
+    </SENSE>
+    <SENSE ID="asset__5">
+        <SENSE-NUM>2</SENSE-NUM>
+        <SENSE-CONTENT>
+            <DEFINITION resource="dict_british" query="yes"> a major benefit</DEFINITION>
+            <EXAMPLES ID="asset__6">
+                <EXAMPLE>Youth is a tremendous asset in this job.</EXAMPLE>
+            </EXAMPLES>
+            <EXAMPLES ID="asset__7">
+                <PATTERNS-COLLOCATIONS>asset to</PATTERNS-COLLOCATIONS>
+                <SEP>: </SEP>
+                <EXAMPLE>He is a definite asset to the team.</EXAMPLE>
+            </EXAMPLES>
+            <TXREF txtitle="Advantages and benefits: " topic="asset__5" thesaurus="british">
+                <Ref dictionary="british" entryId="advantage" bookmark="advantage__10">advantage</Ref>, 
+                <Ref dictionary="british" entryId="benefit_1" bookmark="benefit_1__1">benefit</Ref>, 
+                <Ref dictionary="british" entryId="good_2" bookmark="good_2__1">good</Ref>, 
+                <Ref dictionary="british" entryId="incentive" bookmark="incentive__1">incentive</Ref>, 
+                <Ref dictionary="british" entryId="merit_1" bookmark="merit_1__1">merit</Ref>, 
+                <Ref dictionary="british" entryId="privilege" bookmark="privilege__1">privilege</Ref>, 
+                <Ref dictionary="british" entryId="virtue" bookmark="virtue__7">virtue</Ref>, 
+                <Ref dictionary="british" entryId="asset" bookmark="asset__5">asset</Ref>, 
+                <Ref dictionary="british" entryId="edge_1" bookmark="edge_1__9">edge</Ref>, 
+                <Ref dictionary="british" entryId="trump-card" bookmark="trump-card__2">trump card</Ref>
+            </TXREF>
+        </SENSE-CONTENT>
+    </SENSE>
+</HOMOGRAPH>

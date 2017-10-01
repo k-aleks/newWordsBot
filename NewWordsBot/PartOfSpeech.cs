@@ -2,8 +2,9 @@
 {
     
     //TODO: complete
-    public enum WordForm
+    public enum PartOfSpeech
     {
+        Unknown,
         Noun,
         Verb,
         Adjective,

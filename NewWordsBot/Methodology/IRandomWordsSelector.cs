@@ -1,13 +1,13 @@
 ﻿namespace NewWordsBot
 {
-    internal interface IRandomWordsSelector
+    public interface IRandomWordsSelector
     {
-        string Select(WordForm wordForm);
+        string Select(PartOfSpeech partOfSpeech);
     }
 
     class RandomWordsSelector : IRandomWordsSelector
     {
-        public string Select(WordForm wordForm)
+        public string Select(PartOfSpeech partOfSpeech)
         {
             return "foobar";
         }

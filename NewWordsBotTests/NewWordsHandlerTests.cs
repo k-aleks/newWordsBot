@@ -41,7 +41,7 @@ namespace NewWordsBotTests
             usersStorage.GetOrRegisterUser(null).ReturnsForAnyArgs(user);
 
             var dictionary = MockWordsDictionary();
-            dictionary.Find(wordToLearn).Returns(new DictionaryItem(wordToLearn, definitions, WordForm.Noun));
+            dictionary.Find(wordToLearn).Returns(new DictionaryItem(wordToLearn, definitions, PartOfSpeech.Noun));
 
             var messanger = MockNewWordsHandlerMessanger();
             
@@ -80,18 +80,18 @@ namespace NewWordsBotTests
                 "definition three",
             };
             var user = new NewWordsBot.User("myUserName", 12345);
-            var word = new Word(wordToLearn, definitions[1], WordForm.Noun, LearningStage.First_1m, DateTime.MinValue, DateTime.Now);
+            var word = new Word(wordToLearn, definitions[1], PartOfSpeech.Noun, LearningStage.First_1m, DateTime.MinValue, DateTime.Now);
 
             var usersStorage = MockUsersStorage();
             usersStorage.GetOrRegisterUser(null).ReturnsForAnyArgs(user);
 
             var dictionary = MockWordsDictionary();
-            dictionary.Find(wordToLearn).Returns(new DictionaryItem(wordToLearn, definitions, WordForm.Noun));
+            dictionary.Find(wordToLearn).Returns(new DictionaryItem(wordToLearn, definitions, PartOfSpeech.Noun));
 
             var messanger = MockNewWordsHandlerMessanger();
 
             var learningMethodology = MockLearningMethodology();
-            learningMethodology.CreateNewWord(wordToLearn, definitions[1], WordForm.Noun).Returns(word);
+            learningMethodology.CreateNewWord(wordToLearn, definitions[1], PartOfSpeech.Noun).Returns(word);
             var wordsStorage = MockWordsStorage();
             var newWordsHandler = new NewWordsHandler(usersStorage, wordsStorage, dictionary, messanger, learningMethodology);
             var handler = newWordsHandler;
@@ -110,7 +110,7 @@ namespace NewWordsBotTests
             };
             
             handler.TryHandleCallback(callback).Should().BeTrue();
-            learningMethodology.Received().CreateNewWord(wordToLearn, definitions[1], WordForm.Noun);
+            learningMethodology.Received().CreateNewWord(wordToLearn, definitions[1], PartOfSpeech.Noun);
             wordsStorage.Received().AddOrUpdate(user, word);
             messanger.Received().SendNewWordConfirmation(user, word);
         }
@@ -126,18 +126,18 @@ namespace NewWordsBotTests
                 "definition three",
             };
             var user = new NewWordsBot.User("myUserName", 12345);
-            var word = new Word(wordToLearn, definitions[1], WordForm.Noun, LearningStage.First_1m, DateTime.MinValue, DateTime.Now);
+            var word = new Word(wordToLearn, definitions[1], PartOfSpeech.Noun, LearningStage.First_1m, DateTime.MinValue, DateTime.Now);
 
             var usersStorage = MockUsersStorage();
             usersStorage.GetOrRegisterUser(null).ReturnsForAnyArgs(user);
 
             var dictionary = MockWordsDictionary();
-            dictionary.Find(wordToLearn).Returns(new DictionaryItem(wordToLearn, definitions, WordForm.Noun));
+            dictionary.Find(wordToLearn).Returns(new DictionaryItem(wordToLearn, definitions, PartOfSpeech.Noun));
 
             var messanger = MockNewWordsHandlerMessanger();
 
             var learningMethodology = MockLearningMethodology();
-            learningMethodology.CreateNewWord(wordToLearn, definitions[1], WordForm.Noun).Returns(word);
+            learningMethodology.CreateNewWord(wordToLearn, definitions[1], PartOfSpeech.Noun).Returns(word);
             var wordsStorage = MockWordsStorage();
             var newWordsHandler = new NewWordsHandler(usersStorage, wordsStorage, dictionary, messanger, learningMethodology);
             var handler = newWordsHandler;
@@ -163,7 +163,7 @@ namespace NewWordsBotTests
             
             handler.TryHandleCallback(callback).Should().BeFalse();
             
-            learningMethodology.DidNotReceiveWithAnyArgs().CreateNewWord(Arg.Any<string>(), Arg.Any<string>(), Arg.Any<WordForm>());
+            learningMethodology.DidNotReceiveWithAnyArgs().CreateNewWord(Arg.Any<string>(), Arg.Any<string>(), Arg.Any<PartOfSpeech>());
             wordsStorage.DidNotReceiveWithAnyArgs().AddOrUpdate(Arg.Any<NewWordsBot.User>(), Arg.Any<Word>());
             messanger.DidNotReceiveWithAnyArgs().SendNewWordConfirmation(Arg.Any<NewWordsBot.User>(), Arg.Any<Word>());
         }

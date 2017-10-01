@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>\n
+<HOMOGRAPH ID="rid_1" idm_id="000047168">
+    <HEAD
+        xmlns:e="urn:IDMEE">
+        <H_S1>
+            <MAINENTRY second-colour="yes">
+                <BASE>rid</BASE>
+            </MAINENTRY>
+            <STARS> ★★</STARS>
+        </H_S1>
+        <H_S2>
+            <PART-OF-SPEECH> adjective</PART-OF-SPEECH>
+            <PRONS>
+                <audio type="pronunciation" region="uk" caption="British English pronunciation: rid">
+                    <source type="audio/mpeg" src="https://www.macmillandictionary.com/media/british/uk_pron/r/rid/rid_B/rid_British_English_pronunciation.mp3"/>
+                    <source type="audio/ogg" src="https://www.macmillandictionary.com/media/british/uk_pron_ogg/r/rid/rid_B/rid_British_English_pronunciation.ogg"/>
+                </audio>
+                <PRON>
+                    <SEP> /</SEP>rɪd
+                    <SEP>/</SEP>
+                </PRON>
+            </PRONS>
+        </H_S2>
+    </HEAD>
+    <PHRASE ID="rid_1__1">
+        <SEP
+            xmlns:e="urn:IDMEE">phrases
+        </SEP>
+        <P-HEAD>
+            <SEP
+                xmlns:e="urn:IDMEE">\u2022 
+            </SEP>
+            <MULTIWORD>be rid of</MULTIWORD>
+        </P-HEAD>
+        <SENSE ID="rid_1__2">
+            <SENSE-CONTENT>
+                <DEFINITION resource="dict_british" query="yes"> to be no longer affected by someone or something that is annoying, unpleasant, or not wanted</DEFINITION>
+                <EXAMPLES ID="rid_1__3">
+                    <EXAMPLE>Just give him the money and you can be rid of him.</EXAMPLE>
+                </EXAMPLES>
+                <EXAMPLES ID="rid_1__4">
+                    <PATTERNS-COLLOCATIONS>be glad to be rid of someone/something</PATTERNS-COLLOCATIONS>
+                    <SEP>: </SEP>
+                    <EXAMPLE>I\u2019m glad to be rid of all this extra work.</EXAMPLE>
+                </EXAMPLES>
+                <EXAMPLES ID="rid_1__5">
+                    <PATTERNS-COLLOCATIONS>be well rid of someone/something 
+                        <GL>
+                            <SEP> (=</SEP>be in a much better position without someone or something
+                            <SEP>)</SEP>
+                        </GL>
+                    </PATTERNS-COLLOCATIONS>
+                    <SEP>: </SEP>
+                    <EXAMPLE>Most people would say you were well rid of him.</EXAMPLE>
+                </EXAMPLES>
+                <TXREF txtitle="To not limit something, or to not be limited: " topic="rid_1__2" thesaurus="british">
+                    <Ref dictionary="british" entryId="loosen" bookmark="loosen__5">loosen</Ref>, 
+                    <Ref dictionary="british" entryId="leave-someone-to-their-own-devices" bookmark="leave-someone-to-their-own-devices__1">leave someone to their own devices</Ref>, 
+                    <Ref dictionary="british" entryId="be-at-liberty-to-do-something" bookmark="be-at-liberty-to-do-something__1">be at liberty to do something</Ref>, 
+                    <Ref dictionary="british" entryId="loosen-your-grip-hold-on" bookmark="loosen-your-grip-hold-on__3">loosen your 
+                        <SLASH>grip</SLASH>
+                        <SLASH>
+                            <SEP>/</SEP>hold
+                        </SLASH> (on)
+                    </Ref>, 
+                    <Ref dictionary="british" entryId="let-something-loose" bookmark="let-something-loose__3">let something loose</Ref>, 
+                    <Ref dictionary="british" entryId="let-someone-loose-on-something" bookmark="let-someone-loose-on-something__1">let someone loose (on something)</Ref>, 
+                    <Ref dictionary="british" entryId="cut-loose" bookmark="cut-loose__1">cut loose</Ref>, 
+                    <Ref dictionary="british" entryId="know-no-boundaries" bookmark="know-no-boundaries__1">know no boundaries</Ref>, 
+                    <Ref dictionary="british" entryId="have-something-all-to-oneself" bookmark="have-something-all-to-oneself__1">have something (all) to oneself</Ref>, 
+                    <Ref dictionary="british" entryId="rid_1" bookmark="rid_1__2">be rid of</Ref>
+                </TXREF>
+            </SENSE-CONTENT>
+        </SENSE>
+    </PHRASE>
+    <PHRASE ID="rid_1__6">
+        <P-HEAD>
+            <SEP
+                xmlns:e="urn:IDMEE">\u2022 
+            </SEP>
+            <MULTIWORD>get rid of</MULTIWORD>
+        </P-HEAD>
+        <SENSE ID="rid_1__7">
+            <SENSE-NUM>1</SENSE-NUM>
+            <SENSE-CONTENT>
+                <DEFINITION resource="dict_british" query="yes"> to throw away, give away, or sell a possession that you no longer want or need</DEFINITION>
+                <EXAMPLES ID="rid_1__8">
+                    <EXAMPLE>We\u2019re moving, so we have to get rid of a lot of our furniture.</EXAMPLE>
+                </EXAMPLES>
+                <TXREF txtitle="To get rid of something or someone: " topic="rid_1__7" thesaurus="british">
+                    <Ref dictionary="british" entryId="replace" bookmark="replace__1">replace</Ref>, 
+                    <Ref dictionary="british" entryId="throw-away" bookmark="throw-away__1">throw away</Ref>, 
+                    <Ref dictionary="british" entryId="shed_1" bookmark="shed_1__1">shed</Ref>, 
+                    <Ref dictionary="british" entryId="dispose" bookmark="dispose__2">dispose of</Ref>, 
+                    <Ref dictionary="british" entryId="do-away-with" bookmark="do-away-with__1">do away with</Ref>, 
+                    <Ref dictionary="british" entryId="eliminate" bookmark="eliminate__1">eliminate</Ref>, 
+                    <Ref dictionary="british" entryId="dump_1" bookmark="dump_1__1">dump</Ref>, 
+                    <Ref dictionary="british" entryId="eradicate" bookmark="eradicate__1">eradicate</Ref>, 
+                    <Ref dictionary="british" entryId="discard" bookmark="discard__1">discard</Ref>, 
+                    <Ref dictionary="british" entryId="remove" bookmark="remove__8">remove</Ref>
+                </TXREF>
+            </SENSE-CONTENT>
+        </SENSE>
+        <SENSE ID="rid_1__9">
+            <SENSE-NUM>2</SENSE-NUM>
+            <SENSE-CONTENT>
+                <DEFINITION query="yes" resource="dict_british"> to take action that stops something annoying, unpleasant, or not wanted from affecting you</DEFINITION>
+                <EXAMPLES ID="rid_1__10">
+                    <EXAMPLE>a fast effective way to get rid of weeds</EXAMPLE>
+                </EXAMPLES>
+                <EXAMPLES ID="rid_1__11">
+                    <EXAMPLE>I wish I could get rid of this cold.</EXAMPLE>
+                </EXAMPLES>
+                <TXREF txtitle="To get rid of something or someone: " topic="rid_1__9" thesaurus="british">
+                    <Ref dictionary="british" entryId="replace" bookmark="replace__1">replace</Ref>, 
+                    <Ref dictionary="british" entryId="throw-away" bookmark="throw-away__1">throw away</Ref>, 
+                    <Ref dictionary="british" entryId="shed_1" bookmark="shed_1__1">shed</Ref>, 
+                    <Ref dictionary="british" entryId="dispose" bookmark="dispose__2">dispose of</Ref>, 
+                    <Ref dictionary="british" entryId="do-away-with" bookmark="do-away-with__1">do away with</Ref>, 
+                    <Ref dictionary="british" entryId="eliminate" bookmark="eliminate__1">eliminate</Ref>, 
+                    <Ref dictionary="british" entryId="dump_1" bookmark="dump_1__1">dump</Ref>, 
+                    <Ref dictionary="british" entryId="eradicate" bookmark="eradicate__1">eradicate</Ref>, 
+                    <Ref dictionary="british" entryId="discard" bookmark="discard__1">discard</Ref>, 
+                    <Ref dictionary="british" entryId="remove" bookmark="remove__8">remove</Ref>
+                </TXREF>
+            </SENSE-CONTENT>
+        </SENSE>
+        <SENSE ID="rid_1__12">
+            <SENSE-NUM>3</SENSE-NUM>
+            <SENSE-CONTENT>
+                <DEFINITION resource="dict_british" query="yes"> to make someone go away because they are annoying, unpleasant, or not wanted</DEFINITION>
+                <EXAMPLES ID="rid_1__13">
+                    <EXAMPLE>I\u2019m sure he knew we were trying to get rid of him!</EXAMPLE>
+                </EXAMPLES>
+                <TXREF txtitle="To force someone to leave a place: " topic="rid_1__12" thesaurus="british">
+                    <Ref dictionary="british" entryId="drive-out" bookmark="drive-out__1">drive out</Ref>, 
+                    <Ref dictionary="british" entryId="banish" bookmark="banish__1">banish</Ref>, 
+                    <Ref dictionary="british" entryId="send-away" bookmark="send-away__1">send away</Ref>, 
+                    <Ref dictionary="british" entryId="starve-out" bookmark="starve-out__1">starve out</Ref>, 
+                    <Ref dictionary="british" entryId="displace" bookmark="displace__1">displace</Ref>, 
+                    <Ref dictionary="british" entryId="deport" bookmark="deport__1">deport</Ref>, 
+                    <Ref dictionary="british" entryId="exile_2" bookmark="exile_2__1">exile</Ref>, 
+                    <Ref dictionary="british" entryId="expel" bookmark="expel__6">expel</Ref>, 
+                    <Ref dictionary="british" entryId="evict" bookmark="evict__1">evict</Ref>, 
+                    <Ref dictionary="british" entryId="hound_1" bookmark="hound_1__3">hound</Ref>
+                </TXREF>
+                <TXREF txtitle="To end a friendship or relationship: " topic="rid_1__12" thesaurus="british">
+                    <Ref dictionary="british" entryId="defriend" bookmark="defriend__1">defriend</Ref>, 
+                    <Ref dictionary="british" entryId="unfriend" bookmark="unfriend__1">unfriend</Ref>, 
+                    <Ref dictionary="british" entryId="break-off" bookmark="break-off__4">break off</Ref>, 
+                    <Ref dictionary="british" entryId="break-up" bookmark="break-up__8">break up</Ref>, 
+                    <Ref dictionary="british" entryId="leave_1" bookmark="leave_1__15">leave</Ref>, 
+                    <Ref dictionary="british" entryId="split-up" bookmark="split-up__3">split up</Ref>, 
+                    <Ref dictionary="british" entryId="cut-off" bookmark="cut-off__18">cut off</Ref>, 
+                    <Ref dictionary="british" entryId="fall-out" bookmark="fall-out__1">fall out</Ref>, 
+                    <Ref dictionary="british" entryId="finish-with" bookmark="finish-with__3">finish with</Ref>, 
+                    <Ref dictionary="british" entryId="drop_1" bookmark="drop_1__60">drop</Ref>
+                </TXREF>
+            </SENSE-CONTENT>
+        </SENSE>
+    </PHRASE>
+</HOMOGRAPH>
+
+
