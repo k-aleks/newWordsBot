@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using NLog;
 using Telegram.Bot.Types;
@@ -113,7 +114,15 @@ namespace NewWordsBot
         {
             while (true)
             {
-                RiddleRound();
+                try
+                {
+                    RiddleRound();
+                }
+                catch (Exception e)
+                {
+                    logger.Error(e);
+                }
+                Thread.Sleep(1000); //TODO: get rid of
             }
         }
 

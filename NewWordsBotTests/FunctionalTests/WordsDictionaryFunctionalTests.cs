@@ -7,6 +7,16 @@ namespace NewWordsBotTests.FunctionalTests
     public class WordsDictionaryFunctionalTests
     {
         [Fact]
+        public void Find_non_existing_word_should_return_empty_result()
+        {
+            var dictionaryItem = CreateWordsDictionary().Find("foobar");
+            
+            dictionaryItem.Word.Should().Be("foobar");
+            dictionaryItem.Definitions.Should().BeEmpty();
+            dictionaryItem.PartOfSpeech.Should().Be(PartOfSpeech.Unknown);
+        }
+
+        [Fact]
         public void Find_assets()
         {
             var dictionaryItem = CreateWordsDictionary().Find("asset");

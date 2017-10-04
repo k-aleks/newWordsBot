@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Telegram.Bot.Types;
 
 namespace NewWordsBot
@@ -12,14 +13,21 @@ namespace NewWordsBot
 
     class UsersStorageLocal : IUsersStorage
     {
+        Dictionary<string, User> users = new Dictionary<string, User>();
+        
         public User GetOrRegisterUser(Chat chat)
         {
-            return new User(chat.Username, chat.Id);
+            if (users.ContainsKey(chat.Username))
+                return users[chat.Username];
+            
+            var user =  new User(chat.Username, chat.Id);
+            users[user.Username] = user;
+            return user;
         }
 
         public List<User> GetAllUsers()
         {
-            throw new NotImplementedException();
+            return users.Values.ToList();
         }
     }
 }

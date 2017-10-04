@@ -9,7 +9,7 @@
     {
         public string Select(PartOfSpeech partOfSpeech)
         {
-            return "foobar";
+            return "device";
         }
     }
 }

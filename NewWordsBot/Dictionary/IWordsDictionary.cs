@@ -24,10 +24,10 @@ namespace NewWordsBot
             var searchResult = apiClient.Search(searchQuery);
             string itemId;
             if (!searchResultParser.TryParse(searchResult, out itemId))
-                throw new Exception("TODO: organize fallback");
+                return new DictionaryItem(searchQuery, new List<string>(), PartOfSpeech.Unknown); //TODO: log
             var getItemResult = apiClient.GetItem(itemId);
             if (!getItemResultParser.TryParse(getItemResult, out var definitions, out var partofspeech))
-                throw new Exception("TODO: organize fallback");
+                return new DictionaryItem(searchQuery, new List<string>(), PartOfSpeech.Unknown); //TODO: log
             return new DictionaryItem(searchQuery, definitions, partofspeech);
         }
     }

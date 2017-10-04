@@ -78,7 +78,7 @@ namespace NewWordsBot
                 wordsStorage.AddOrUpdate(user, word);
                 
                 messanger.SendNewWordConfirmation(user, word);
-                logger.Info($"Added new word \"{word.TheWord}\" with definition \"{word.Definition}\"");
+                logger.Info($"Added new word {word.TheWord} with definition {word.Definition}");
                 
                 pendingDefinitions.Remove(user.Username);
                 return true;
