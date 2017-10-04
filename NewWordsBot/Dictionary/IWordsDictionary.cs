@@ -1,23 +1,34 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace NewWordsBot
 {
     public interface IWordsDictionary
     {
-        DictionaryItem Find(string word);
+        DictionaryItem Find(string searchQuery);
     }
 
-    class WordsDictionary : IWordsDictionary
+    public class WordsDictionary : IWordsDictionary
     {
-        public DictionaryItem Find(string word)
+        private readonly MacmillanSearchResultParser searchResultParser = new MacmillanSearchResultParser();
+        readonly MacmillanGetItemResultParser getItemResultParser = new MacmillanGetItemResultParser();
+        private readonly MacmillanApiClient apiClient;
+
+        public WordsDictionary(MacmillanApiClient apiClient)
         {
-            var definitions = new List<string>()
-            {
-                "something such as money or property that a person or company owns",
-                "an item of text or media that has been put into a digital form that includes the right to use it",
-                "a major benefit"
-            };
-            return new DictionaryItem(word, definitions, PartOfSpeech.Noun);
+            this.apiClient = apiClient;
+        }
+
+        public DictionaryItem Find(string searchQuery)
+        {
+            var searchResult = apiClient.Search(searchQuery);
+            string itemId;
+            if (!searchResultParser.TryParse(searchResult, out itemId))
+                throw new Exception("TODO: organize fallback");
+            var getItemResult = apiClient.GetItem(itemId);
+            if (!getItemResultParser.TryParse(getItemResult, out var definitions, out var partofspeech))
+                throw new Exception("TODO: organize fallback");
+            return new DictionaryItem(searchQuery, definitions, partofspeech);
         }
     }
 }

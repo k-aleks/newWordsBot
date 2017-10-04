@@ -6,13 +6,13 @@ namespace NewWordsBot
     {
         public string Word { get; } 
         public List<string> Definitions { get; }
-        public PartOfSpeech Form { get; }
+        public PartOfSpeech PartOfSpeech { get; }
 
-        public DictionaryItem(string word, List<string> definitions, PartOfSpeech form)
+        public DictionaryItem(string word, List<string> definitions, PartOfSpeech partOfSpeech)
         {
             Word = word;
             Definitions = definitions;
-            Form = form;
+            PartOfSpeech = partOfSpeech;
         }
     }
 }

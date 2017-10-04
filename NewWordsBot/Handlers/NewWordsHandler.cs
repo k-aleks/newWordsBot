@@ -73,7 +73,7 @@ namespace NewWordsBot
                 var dicItem = pendingDefinitions[user.Username];
                 var definitionIndex = int.Parse(callbackData.Split(' ')[1]);
 
-                var word = learningMethodology.CreateNewWord(dicItem.Word, dicItem.Definitions[definitionIndex], dicItem.Form);
+                var word = learningMethodology.CreateNewWord(dicItem.Word, dicItem.Definitions[definitionIndex], dicItem.PartOfSpeech);
                 
                 wordsStorage.AddOrUpdate(user, word);
                 
