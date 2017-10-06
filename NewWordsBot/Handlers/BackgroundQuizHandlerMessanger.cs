@@ -39,7 +39,7 @@ namespace NewWordsBot
             {
                 keyboardButtons[i] = new[]
                 {
-                    new InlineKeyboardCallbackButton(definitions[i], "/response " + i)
+                    new InlineKeyboardCallbackButton(definitions[i], $"/response {i} {word}")
                 };
             }
             var keyboard = new InlineKeyboardMarkup(keyboardButtons);

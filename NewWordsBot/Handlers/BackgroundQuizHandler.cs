@@ -46,6 +46,7 @@ namespace NewWordsBot
                 user = usersStorage.GetOrRegisterUser(callback.Message.Chat);
                 int variantIndex;
                 string responseForWord;
+                logger.Debug(callback.Data);
                 ParseCallback(callback, out variantIndex, out responseForWord);
                 Word word;
                 int rightVariantIndex;
