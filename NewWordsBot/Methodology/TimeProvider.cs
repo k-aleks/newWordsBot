@@ -6,7 +6,8 @@ namespace NewWordsBot
     {
         public DateTime InOneMinute()
         {
-            return DateTime.UtcNow.AddMinutes(1);
+            //return DateTime.UtcNow.AddMinutes(1);
+            return DateTime.UtcNow;
         }
 
         public DateTime InThirtyMinutes()

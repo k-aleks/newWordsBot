@@ -13,20 +13,20 @@ namespace NewWordsBot
         private readonly IWordsStorage wordsStorage;
         private readonly IWordsDictionary dictionary;
         private readonly IPendingQuizRequests pendingQuizRequests;
-        private readonly IRandomWordsSelector randomWordsSelector;
+        private readonly IRandomWordDefinitionSelector _randomWordDefinitionDefenitionSelector;
         private readonly ILearningMethodology learningMethodology;
         private readonly Random rnd = new Random();
         private readonly ILogger logger = LogManager.GetCurrentClassLogger();
         private readonly BackgroundQuizHandlerMessanger messanger;
 
         public BackgroundQuizHandler(IUsersStorage usersStorage, IWordsStorage wordsStorage, IWordsDictionary dictionary,
-            IPendingQuizRequests pendingQuizRequests, IRandomWordsSelector randomWordsSelector, ILearningMethodology learningMethodology, BackgroundQuizHandlerMessanger messanger)
+            IPendingQuizRequests pendingQuizRequests, IRandomWordDefinitionSelector randomWordDefinitionDefenitionSelector, ILearningMethodology learningMethodology, BackgroundQuizHandlerMessanger messanger)
         {
             this.usersStorage = usersStorage;
             this.wordsStorage = wordsStorage;
             this.dictionary = dictionary;
             this.pendingQuizRequests = pendingQuizRequests;
-            this.randomWordsSelector = randomWordsSelector;
+            this._randomWordDefinitionDefenitionSelector = randomWordDefinitionDefenitionSelector;
             this.learningMethodology = learningMethodology;
             this.messanger = messanger;
         }
@@ -160,8 +160,8 @@ namespace NewWordsBot
             var defs = new List<string>();
             for (int i = 0; i < 3; i++)
             {
-                var w = randomWordsSelector.Select(word.Form);
-                defs.Add(dictionary.Find(w).Definitions[0]); 
+                var w = _randomWordDefinitionDefenitionSelector.Select(word.Form);
+                defs.Add(w); 
             }
             return defs;
         }

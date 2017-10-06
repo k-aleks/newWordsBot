@@ -18,7 +18,7 @@ namespace NewWordsBot
             List<IHandler> handlers = new List<IHandler>()
             {
                 new NewWordsHandler(usersStorageLocal, wordsStorageLocal, wordsDictionary, new NewWordsHandlerMessanger(telegramBotClient), learningMethodology),
-                new BackgroundQuizHandler(usersStorageLocal, wordsStorageLocal, wordsDictionary, new PendingQuizRequests(),  new RandomWordsSelector(), learningMethodology, new BackgroundQuizHandlerMessanger(telegramBotClient)),
+                new BackgroundQuizHandler(usersStorageLocal, wordsStorageLocal, wordsDictionary, new PendingQuizRequests(),  new RandomWordDefinitionSelector(wordsDictionary), learningMethodology, new BackgroundQuizHandlerMessanger(telegramBotClient)),
                 new HelpHandler(telegramBotClient)
             };
             
