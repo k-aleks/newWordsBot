@@ -35,7 +35,7 @@ namespace NewWordsBotTests
                 "definition two",
                 "definition three",
             };
-            var user = new NewWordsBot.User("myUserName", 12345);
+            var user = new NewWordsBot.User(Guid.NewGuid(), "myUserName", 12345, DateTime.Now);
 
             var usersStorage = MockUsersStorage();
             usersStorage.GetOrRegisterUser(null).ReturnsForAnyArgs(user);
@@ -79,7 +79,7 @@ namespace NewWordsBotTests
                 "definition two",
                 "definition three",
             };
-            var user = new NewWordsBot.User("myUserName", 12345);
+            var user = new NewWordsBot.User(Guid.NewGuid(), "myUserName", 12345, DateTime.Now);
             var word = new Word(wordToLearn, definitions[1], PartOfSpeech.Noun, LearningStage.First_1m, DateTime.MinValue, DateTime.Now);
 
             var usersStorage = MockUsersStorage();
@@ -125,7 +125,7 @@ namespace NewWordsBotTests
                 "definition two",
                 "definition three",
             };
-            var user = new NewWordsBot.User("myUserName", 12345);
+            var user = new NewWordsBot.User(Guid.NewGuid(), "myUserName", 12345, DateTime.Now);
             var word = new Word(wordToLearn, definitions[1], PartOfSpeech.Noun, LearningStage.First_1m, DateTime.MinValue, DateTime.Now);
 
             var usersStorage = MockUsersStorage();
