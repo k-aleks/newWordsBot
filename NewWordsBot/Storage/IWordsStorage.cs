@@ -1,35 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using NLog;
 
 namespace NewWordsBot
 {
+    //TODO: delete this useless proxy
     public interface IWordsStorage
     {
         void AddOrUpdate(User user, Word word);
         Word GetNextReadyToRepeat(User user);
     }
 
-    class WordsStorageLocal : IWordsStorage
+    class WordsStorage : IWordsStorage
     {
-        Dictionary<User, Dictionary<string, Word>> storage = new Dictionary<User, Dictionary<string, Word>>();
+        private readonly IStorageClient storageClient;
+        private readonly ILogger logger = LogManager.GetCurrentClassLogger();
         
         public void AddOrUpdate(User user, Word word)
         {
-            if (!storage.ContainsKey(user))
-                storage.Add(user, new Dictionary<string, Word>());
-            storage[user][word.TheWord] = word;
+            storageClient.AddOrUpdateWord(user, word);
         }
 
         public Word GetNextReadyToRepeat(User user)
         {
-            if (!storage.ContainsKey(user))
-                return null;
-            foreach (var kvp in storage[user])
-            {
-                if (kvp.Value.NextRepetition <= DateTime.UtcNow)
-                    return kvp.Value;
-            }
-            return null;
+            return storageClient.FindWordWithNextRepetitionLessThenNow(user);
         }
     }
 }

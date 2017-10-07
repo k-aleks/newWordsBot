@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using NLog;
@@ -11,12 +12,14 @@ namespace NewWordsBot
         private readonly MongoClient mongoClient;
         private readonly string databaseName;
         private readonly string usersCollectionName;
+        private readonly string wordsForUserCollectionPrefix;
 
-        public StorageClient(MongoClient mongoClient, string databaseName, string usersCollectionName)
+        public StorageClient(MongoClient mongoClient, string databaseName, string usersCollectionName, string wordsForUserCollectionPrefix)
         {
             this.mongoClient = mongoClient;
             this.databaseName = databaseName;
             this.usersCollectionName = usersCollectionName;
+            this.wordsForUserCollectionPrefix = wordsForUserCollectionPrefix;
         }
 
         public List<User> GetUsers()
@@ -34,6 +37,26 @@ namespace NewWordsBot
             var collection = database.GetCollection<User>(usersCollectionName);
             collection.InsertOne(user);
             logger.Info($"Inserted new user into database: {user}");
+        }
+
+        public void AddOrUpdateWord(User user, Word word)
+        {
+            var database = mongoClient.GetDatabase(databaseName);
+            var collection = database.GetCollection<Word>(GetWordsCollecdtionName(user));
+            collection.InsertOne(word);
+        }
+
+        public Word FindWordWithNextRepetitionLessThenNow(User user)
+        {
+            var database = mongoClient.GetDatabase(databaseName);
+            var collection = database.GetCollection<Word>(GetWordsCollecdtionName(user));
+            var res = collection.Find(w => w.NextRepetition < DateTime.UtcNow);
+            return res.FirstOrDefault();
+        }
+
+        private string GetWordsCollecdtionName(User user)
+        {
+            return wordsForUserCollectionPrefix + user.Username;
         }
     }
 }

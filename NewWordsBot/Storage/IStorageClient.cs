@@ -6,5 +6,7 @@ namespace NewWordsBot
     {
         List<User> GetUsers();
         void InsertUser(User user);
+        void AddOrUpdateWord(User user, Word word);
+        Word FindWordWithNextRepetitionLessThenNow(User user);
     }
 }

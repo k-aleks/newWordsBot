@@ -12,10 +12,10 @@ namespace NewWordsBot
         {
             var telegramBotClient = new TelegramBotClient(Config.TelegramToken);
 
-            var storageClient = new StorageClient(new MongoClient(Config.MongoDbConnectionString), Config.DatabaseName, Config.UsersCollection);
+            var storageClient = new StorageClient(new MongoClient(Config.MongoDbConnectionString), Config.DatabaseName, Config.UsersCollection, Config.WordsForUserCollectionPrefix);
             
             var usersStorage = new UsersStorage(storageClient, TimeSpan.FromMinutes(1));
-            var wordsStorageLocal = new WordsStorageLocal();
+            var wordsStorageLocal = new WordsStorage();
             var wordsDictionary = new WordsDictionary(new MacmillanApiClient(Config.MacmillanApiBaseUrl, Config.MacmillanApiKey));
             var learningMethodology = new LearningMethodology(new TimeProvider());
             
