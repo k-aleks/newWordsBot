@@ -14,7 +14,7 @@ namespace NewWordsBot
 
             var storageClient = new StorageClient(new MongoClient(Config.MongoDbConnectionString), Config.DatabaseName, Config.UsersCollection, Config.WordsForUserCollectionPrefix);
             
-            var usersStorage = new UsersStorage(storageClient, TimeSpan.FromMinutes(1));
+            var usersStorage = new UsersStorage(storageClient, TimeSpan.FromHours(1) /*Don't expect to add new users in concurrent right now*/);
             var wordsStorageLocal = new WordsStorage(storageClient);
             var wordsDictionary = new WordsDictionary(new MacmillanApiClient(Config.MacmillanApiBaseUrl, Config.MacmillanApiKey));
             var timeProvider = new TimeProviderForTests();
