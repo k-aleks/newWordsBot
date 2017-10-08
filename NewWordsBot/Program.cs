@@ -17,7 +17,7 @@ namespace NewWordsBot
             var usersStorage = new UsersStorage(storageClient, TimeSpan.FromHours(1) /*Don't expect to add new users in concurrent right now*/);
             var wordsStorageLocal = new WordsStorage(storageClient);
             var wordsDictionary = new WordsDictionary(new MacmillanApiClient(Config.MacmillanApiBaseUrl, Config.MacmillanApiKey));
-            var timeProvider = new TimeProviderForTests();
+            var timeProvider = Config.TestMode ? (ITimeProvider) new TimeProviderForTests() : new TimeProvider();
             var learningMethodology = new LearningMethodology(timeProvider);
             
             List<IHandler> handlers = new List<IHandler>()
