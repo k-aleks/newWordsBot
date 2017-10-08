@@ -43,7 +43,7 @@ namespace NewWordsBot
         {
             var database = mongoClient.GetDatabase(databaseName);
             var collection = database.GetCollection<Word>(GetWordsCollecdtionName(user));
-            collection.InsertOne(word);
+            collection.ReplaceOne(w => w.TheWord == word.TheWord, word, new UpdateOptions { IsUpsert = true });
         }
 
         public Word FindWordWithNextRepetitionLessThenNow(User user)

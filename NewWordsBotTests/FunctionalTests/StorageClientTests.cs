@@ -1,7 +1,9 @@
 ﻿using System;
 using FluentAssertions;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using NewWordsBot;
+using NSubstitute;
 using Xunit;
 
 namespace NewWordsBotTests.FunctionalTests
@@ -78,9 +80,34 @@ namespace NewWordsBotTests.FunctionalTests
             storageClient.FindWordWithNextRepetitionLessThenNow(user).Should().Be(word);
         }
 
+        [Fact]
+        public void AddOrUpdateWord_should_update_word_if_exists()
+        {
+            var user = new User(Guid.NewGuid(), "testUser", 123, DateTime.UtcNow);
+
+            ClearWordsCollection(GetCollectionName(user));
+
+            var storageClient = CreateStorageClient();
+
+            var word = CeateRandomWord(DateTime.UtcNow.AddMinutes(-11));
+            storageClient.AddOrUpdateWord(user, word);
+            EnsureNumerOfElementsInCollection(GetCollectionName(user), 1);
+            
+            storageClient.AddOrUpdateWord(user, CloneWithNewDefinition(word, "def1"));
+            EnsureNumerOfElementsInCollection(GetCollectionName(user), 1);
+            
+            var res = FindOne<Word>(GetCollectionName(user));
+            res.Definition.Should().Be("def1");
+        }
+
         private Word CeateRandomWord(DateTime nextRepetition)
         {
             return new Word(Guid.NewGuid().ToString(), Guid.NewGuid().ToString(), PartOfSpeech.Noun, LearningStage.First_1m, nextRepetition, DateTime.UtcNow);
+        }
+        
+        private Word CloneWithNewDefinition(Word w, string newDefinition)
+        {
+            return new Word(w.TheWord, newDefinition, w.Form, w.Stage, w.NextRepetition, w.AddedToDictionary);
         }
 
         private static StorageClient CreateStorageClient()
@@ -107,6 +134,30 @@ namespace NewWordsBotTests.FunctionalTests
                 .GetDatabase(Config.DatabaseName)
                 .GetCollection<User>(collectionName)
                 .DeleteMany(u => true);
+        }
+        
+        private static void EnsureNumerOfElementsInCollection(string collectionName, int expectedNumberOfElements)
+        {
+            var mongoClient = new MongoClient(Config.MongoDbConnectionString);
+            
+            var elements = mongoClient
+                .GetDatabase(Config.DatabaseName)
+                .GetCollection<User>(collectionName)
+                .Find(new BsonDocument());
+
+            elements.Count().Should().Be(expectedNumberOfElements);
+        }
+        
+        private static T FindOne<T>(string collectionName)
+        {
+            var mongoClient = new MongoClient(Config.MongoDbConnectionString);
+
+            var element = mongoClient
+                .GetDatabase(Config.DatabaseName)
+                .GetCollection<T>(collectionName)
+                .Find(new BsonDocument()).FirstOrDefault();
+            
+            return element;
         }
     }
 }

@@ -8,7 +8,7 @@ namespace NewWordsBot
         [BsonId]
         public string TheWord { get; } //TODO: rename
         public string Definition { get; } 
-        public PartOfSpeech Form { get; }
+        public PartOfSpeech Form { get; } //TODO: rename Form to PoS
         public LearningStage Stage { get; }
         public DateTime NextRepetition { get; }
         public DateTime AddedToDictionary { get; }
