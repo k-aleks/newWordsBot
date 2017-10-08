@@ -15,9 +15,10 @@ namespace NewWordsBot
             var storageClient = new StorageClient(new MongoClient(Config.MongoDbConnectionString), Config.DatabaseName, Config.UsersCollection, Config.WordsForUserCollectionPrefix);
             
             var usersStorage = new UsersStorage(storageClient, TimeSpan.FromMinutes(1));
-            var wordsStorageLocal = new WordsStorage();
+            var wordsStorageLocal = new WordsStorage(storageClient);
             var wordsDictionary = new WordsDictionary(new MacmillanApiClient(Config.MacmillanApiBaseUrl, Config.MacmillanApiKey));
-            var learningMethodology = new LearningMethodology(new TimeProvider());
+            var timeProvider = new TimeProvider();
+            var learningMethodology = new LearningMethodology(timeProvider);
             
             List<IHandler> handlers = new List<IHandler>()
             {

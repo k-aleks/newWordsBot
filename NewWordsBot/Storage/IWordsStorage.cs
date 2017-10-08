@@ -15,7 +15,12 @@ namespace NewWordsBot
     {
         private readonly IStorageClient storageClient;
         private readonly ILogger logger = LogManager.GetCurrentClassLogger();
-        
+
+        public WordsStorage(IStorageClient storageClient)
+        {
+            this.storageClient = storageClient;
+        }
+
         public void AddOrUpdate(User user, Word word)
         {
             storageClient.AddOrUpdateWord(user, word);
