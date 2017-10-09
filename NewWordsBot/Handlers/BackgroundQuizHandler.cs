@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using NLog;
+using log4net;
 using Telegram.Bot.Types;
 
 namespace NewWordsBot
@@ -16,7 +16,7 @@ namespace NewWordsBot
         private readonly IRandomWordDefinitionSelector _randomWordDefinitionDefenitionSelector;
         private readonly ILearningMethodology learningMethodology;
         private readonly Random rnd = new Random();
-        private readonly ILogger logger = LogManager.GetCurrentClassLogger();
+        private readonly ILog logger = LogManager.GetLogger(typeof(BackgroundQuizHandler));
         private readonly BackgroundQuizHandlerMessanger messanger;
 
         public BackgroundQuizHandler(IUsersStorage usersStorage, IWordsStorage wordsStorage, IWordsDictionary dictionary,

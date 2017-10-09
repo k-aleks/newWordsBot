@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using NLog;
 using Telegram.Bot;
 using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.InlineKeyboardButtons;
@@ -10,7 +9,6 @@ namespace NewWordsBot
     public class BackgroundQuizHandlerMessanger
     {
         private readonly ITelegramBotClient botClient;
-        private readonly ILogger logger = LogManager.GetCurrentClassLogger();
 
         public BackgroundQuizHandlerMessanger(ITelegramBotClient botClient)
         {

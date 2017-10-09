@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using NLog;
+using log4net;
 using Telegram.Bot;
 using Telegram.Bot.Args;
 using Telegram.Bot.Types;
@@ -11,7 +11,7 @@ namespace NewWordsBot
     {
         private readonly ITelegramBotClient botClient;
         private readonly List<IHandler> handlers;
-        private readonly ILogger logger = LogManager.GetCurrentClassLogger();
+        private readonly ILog logger = LogManager.GetLogger(typeof(Bot));
 
         public Bot(ITelegramBotClient botClient, List<IHandler> handlers)
         {
@@ -27,7 +27,7 @@ namespace NewWordsBot
             }
             
             var getMeResult = botClient.GetMeAsync().Result;
-            logger.Info("Received bot user with username {0}", getMeResult.Username);
+            logger.Info($"Received bot user with username {getMeResult.Username}");
 
             botClient.OnMessage += OnMessageReceived;
             botClient.OnCallbackQuery += OnCallbackQueryReceived;

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using NLog;
+using log4net;
 using Telegram.Bot.Types;
 
 namespace NewWordsBot
@@ -12,7 +12,7 @@ namespace NewWordsBot
         private readonly IWordsStorage wordsStorage;
         private readonly IWordsDictionary dictionary;
         private readonly ILearningMethodology learningMethodology;
-        private readonly ILogger logger = LogManager.GetCurrentClassLogger();
+        private readonly ILog logger = LogManager.GetLogger(typeof(NewWordsHandler));
         private readonly INewWordsHandlerMessanger messanger;
 
         public NewWordsHandler(IUsersStorage usersStorage, IWordsStorage wordsStorage, IWordsDictionary dictionary, INewWordsHandlerMessanger messanger, ILearningMethodology learningMethodology)

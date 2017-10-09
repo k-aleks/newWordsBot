@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using NLog;
+﻿using log4net;
 
 namespace NewWordsBot
 {
@@ -14,7 +12,7 @@ namespace NewWordsBot
     class WordsStorage : IWordsStorage
     {
         private readonly IStorageClient storageClient;
-        private readonly ILogger logger = LogManager.GetCurrentClassLogger();
+        private readonly ILog logger = LogManager.GetLogger(typeof(WordsStorage));
 
         public WordsStorage(IStorageClient storageClient)
         {

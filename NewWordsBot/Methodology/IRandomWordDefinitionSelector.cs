@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using NLog;
+using log4net;
 
 namespace NewWordsBot
 {
@@ -12,7 +11,7 @@ namespace NewWordsBot
 
     class RandomWordDefinitionSelector : IRandomWordDefinitionSelector
     {
-        private readonly ILogger logger = LogManager.GetCurrentClassLogger();
+        private readonly ILog logger = LogManager.GetLogger(typeof(RandomWordDefinitionSelector));
         private readonly Random rnd = new Random();
         private readonly IWordsDictionary dictionary;
         private readonly string[] words;

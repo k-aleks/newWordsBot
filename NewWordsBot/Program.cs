@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading;
+using log4net;
+using log4net.Config;
 using MongoDB.Driver;
 using Telegram.Bot;
 
@@ -10,6 +13,9 @@ namespace NewWordsBot
     {
         static void Main(string[] args)
         {
+            var loggingRepo = LogManager.GetRepository(typeof(Program).Assembly);
+            XmlConfigurator.ConfigureAndWatch(loggingRepo, new FileInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "log.config.xml")));
+            
             var telegramBotClient = new TelegramBotClient(Config.TelegramToken);
 
             var storageClient = new StorageClient(new MongoClient(Config.MongoDbConnectionString), Config.DatabaseName, Config.UsersCollection, Config.WordsForUserCollectionPrefix);
