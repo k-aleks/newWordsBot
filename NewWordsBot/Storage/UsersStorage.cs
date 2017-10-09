@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using NLog;
+using log4net;
 using Telegram.Bot.Types;
 
 namespace NewWordsBot
@@ -12,7 +12,7 @@ namespace NewWordsBot
     {
         private readonly IStorageClient storageClient;
         private readonly TimeSpan cacheUpdatePeriod;
-        private readonly ILogger logger = LogManager.GetCurrentClassLogger();
+        private readonly ILog logger = LogManager.GetLogger(typeof(UsersStorage));
         private readonly Dictionary<string, User> usersCache = new Dictionary<string, User>();
 
         public UsersStorage(IStorageClient storageClient, TimeSpan cacheUpdatePeriod)

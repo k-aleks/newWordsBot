@@ -4,7 +4,6 @@ using System.Threading;
 using FluentAssertions;
 using NewWordsBot;
 using NSubstitute;
-using NSubstitute.ClearExtensions;
 using Telegram.Bot.Types;
 using Xunit;
 using User = NewWordsBot.User;

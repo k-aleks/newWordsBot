@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using log4net;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using NLog;
 
 namespace NewWordsBot
 {
     public class StorageClient : IStorageClient
     {
-        private readonly ILogger logger = LogManager.GetCurrentClassLogger();
+        private readonly ILog logger = LogManager.GetLogger(typeof(StorageClient));
         private readonly MongoClient mongoClient;
         private readonly string databaseName;
         private readonly string usersCollectionName;

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using NLog.Web.LayoutRenderers;
 using Telegram.Bot.Types;
 
 namespace NewWordsBot
