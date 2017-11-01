@@ -18,7 +18,12 @@ namespace NewWordsBot
 
         public bool TryHandleRequest(Message message)
         {
-            var usage = @"Usage:
+            var usage = @"
+ATTENTION: we are run out of available API calls to the dictionary. 
+The problem will be solved shortly. 
+For more details please reach @akazakov
+
+Usage:
 /add <word or expression>  - add new word or expression
 ";
             botClient.SendTextMessage(message.Chat.Id, usage);
