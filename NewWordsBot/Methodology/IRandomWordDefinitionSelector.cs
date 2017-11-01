@@ -15,7 +15,7 @@ namespace NewWordsBot
         private readonly Random rnd = new Random();
         private readonly IWordsDictionary dictionary;
         private readonly string[] words;
-        private int maxAttempts = 3;
+        private int maxAttempts = 1;
 
         public RandomWordDefinitionSelector(IWordsDictionary dictionary)
         {
