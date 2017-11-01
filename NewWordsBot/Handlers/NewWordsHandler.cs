@@ -35,6 +35,7 @@ namespace NewWordsBot
             User user = null;
             try
             {
+                logger.Debug($"New message: {message.Text}");
                 user = usersStorage.GetOrRegisterUser(message.Chat);
                 var wordToLearn = message.Text.Replace("/add", "").Trim();
                 var dictionaryItem = dictionary.Find(wordToLearn);
